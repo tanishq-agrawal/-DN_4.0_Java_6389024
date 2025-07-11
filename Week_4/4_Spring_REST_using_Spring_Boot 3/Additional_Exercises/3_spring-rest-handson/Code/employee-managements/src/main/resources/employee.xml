@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="skills" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>Java</value>
+                <value>Spring</value>
+                <value>Angular</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="departments" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <bean class="com.example.model.Department">
+                    <property name="id" value="1"/>
+                    <property name="name" value="HR"/>
+                </bean>
+                <bean class="com.example.model.Department">
+                    <property name="id" value="2"/>
+                    <property name="name" value="Engineering"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="employees" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <bean class="com.example.model.Employee">
+                    <property name="id" value="1"/>
+                    <property name="name" value="Alice"/>
+                    <property name="department">
+                        <bean class="com.example.model.Department">
+                            <property name="id" value="1"/>
+                            <property name="name" value="HR"/>
+                        </bean>
+                    </property>
+                    <property name="skills" ref="skills"/>
+                </bean>
+                <bean class="com.example.model.Employee">
+                    <property name="id" value="2"/>
+                    <property name="name" value="Bob"/>
+                    <property name="department">
+                        <bean class="com.example.model.Department">
+                            <property name="id" value="2"/>
+                            <property name="name" value="Engineering"/>
+                        </bean>
+                    </property>
+                    <property name="skills" ref="skills"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
